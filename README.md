@@ -12,10 +12,10 @@
 ## 先在本地跑通
 
 1. 下载作者套件 ZIP 并解压。在 GitHub 上也可以选 **Code → Download ZIP**。
-2. 启动游戏，进入 **模组 → 本地模组 → 复制路径**，在资源管理器打开该目录。把上表中的一个**成品文件夹**复制进去，目录层级如下。
+2. 在新版 Windows 游戏中，手动安装目录是 `游戏安装目录/FrontierTale_Data/Mods`。在 Steam 库右键游戏，选 **管理 → 浏览本地文件**，打开 `FrontierTale_Data`，如果没有 `Mods` 文件夹就新建一个。也可以在游戏内选 **模组 → 本地模组 → 复制路径**，查看当前版本实际使用的目录。把上表中的一个**成品文件夹**复制进去。
 
    ```text
-   Mods/
+   FrontierTale_Data/Mods/
      recipe-template/
        manifest.json
        recipes.json

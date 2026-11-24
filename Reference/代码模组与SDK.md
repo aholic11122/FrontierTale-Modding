@@ -45,7 +45,7 @@
    dotnet build Source/HelloMod.csproj -c Release "-p:GameDir=D:/SteamLibrary/steamapps/common/FrontierTale"
    ```
 
-5. 把 `hello-mod` 复制到游戏「本地模组 → 复制路径」显示的目录。启用并重启，在游戏的 `Player.log` 搜索 `[HelloMod] 模组已加载`。Windows 上可从模组目录返回上一级找到这份日志。发布步骤见[作者指南](../README.md)。
+5. 把 `hello-mod` 复制到游戏「模组 → 本地模组 → 复制路径」显示的目录。启用并重启后，在资源管理器地址栏输入 `%USERPROFILE%\AppData\LocalLow\APOPHIS\FrontierTale\Player.log`，打开日志并搜索 `[HelloMod] 模组已加载`。发布步骤见[作者指南](../README.md)。
 
 ## SDK v1 常用接口
 
