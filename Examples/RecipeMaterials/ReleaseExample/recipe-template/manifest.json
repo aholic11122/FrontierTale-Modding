@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "id": "frontiertale.template.recipe",
+  "title": "配方模板 · 见习短弓",
+  "version": "1.0.0",
+  "description": "手工台制作见习短弓时使用木材 ×2、麻绳 ×5。",
+  "type": "recipes"
+}

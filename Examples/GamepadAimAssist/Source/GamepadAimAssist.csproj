@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.0.1</Version>
+    <LangVersion>9.0</LangVersion>
+    <DebugType>none</DebugType>
+    <GameAssemblies>$(GameDir)/FrontierTale_Data/Managed</GameAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(GameAssemblies)/FrontierTale.ModSDK.dll;$(GameAssemblies)/Assembly-CSharp.dll;$(GameAssemblies)/UnityEngine.CoreModule.dll;$(GameAssemblies)/UnityEngine.UIModule.dll;$(GameAssemblies)/UnityEngine.UI.dll;$(GameAssemblies)/Unity.TextMeshPro.dll;$(GameAssemblies)/Unity.InputSystem.dll">
+      <Private>false</Private>
+      <ExternallyResolved>true</ExternallyResolved>
+    </Reference>
+  </ItemGroup>
+  <Target Name="CheckGame" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(GameAssemblies)/FrontierTale.ModSDK.dll')" Text="请用 -p:GameDir 指定支持模组的 Windows Mono 游戏目录。" />
+  </Target>
+  <Target Name="CopyMod" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(MSBuildThisFileDirectory)../ReleaseExample/gamepad-aim-assist" />
+  </Target>
+</Project>
