@@ -158,6 +158,8 @@ namespace GamepadAimAssist
 
         private void UpdateSettings(UICanvas screen, UIManager ui)
         {
+            // 以游戏当前使用的设备为准，手柄插着但正在用键鼠时也隐藏此行。
+            bool usingGamepad = boundInput != null && boundInput.currDeviceType == 1;
             if (screen != settingsCanvas || Time.unscaledTime >= nextSettingsSearch)
             {
                 settingsCanvas = screen;
@@ -169,7 +171,10 @@ namespace GamepadAimAssist
                 else if (settingsRow != null)
                     settingsRow.BindOwner(settings);
             }
-            if (settingsRow != null && settingsRow.isActiveAndEnabled && ui.GetActiveInputTopCanvas() == null)
+            if (settingsRow == null) return;
+            // 从宿主驱动显隐，已隐藏的行在切回手柄时也能恢复。
+            settingsRow.SyncDevice(usingGamepad);
+            if (usingGamepad && settingsRow.isActiveAndEnabled && ui.GetActiveInputTopCanvas() == null)
                 settingsRow.Refresh(strength);
         }
 

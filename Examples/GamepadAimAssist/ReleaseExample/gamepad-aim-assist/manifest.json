@@ -4,8 +4,8 @@
   "sdkVersion": 1,
   "id": "frontiertale.gamepad-aim-assist",
   "title": "手柄辅助瞄准",
-  "version": "1.0.1",
-  "description": "装备远程武器后，按下攻击会将准星拉向附近的可见怪物。100% 时直接吸附，松开右杆也能捕捉身边近敌。设置 → 游戏 → 辅助瞄准强度，上下选中该行，左右调整。默认 50%，0% 关闭。",
+  "version": "1.0.2",
+  "description": "使用手柄操作远程武器时，按下攻击会将准星拉向附近的可见怪物。100% 时直接吸附，松开右杆也能捕捉身边近敌。使用手柄时在「设置 → 游戏」调整辅助瞄准强度，切回键鼠会隐藏该项。默认 50%，0% 关闭。",
   "assembly": "GamepadAimAssist.dll",
   "entryType": "GamepadAimAssist.AimAssistMod"
 }

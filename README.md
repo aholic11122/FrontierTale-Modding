@@ -5,7 +5,7 @@
 | 想做什么 | 从哪里开始 | 在游戏里看什么 |
 | --- | --- | --- |
 | 修改现有配方 | [见习短弓的成品文件夹](Examples/RecipeMaterials/ReleaseExample/recipe-template) · [材料清单](Examples/RecipeMaterials/ReleaseExample/recipe-template/recipes.json) | 手工台显示木材 ×2、麻绳 ×5 |
-| 用 C# 改变操作、在设置页加控件 | [手柄辅助瞄准 1.0.1 成品](Examples/GamepadAimAssist/ReleaseExample/gamepad-aim-assist) · [源码](Examples/GamepadAimAssist/Source) · [编译和手柄测试](Examples/GamepadAimAssist/README.md) | 「设置 → 游戏」出现辅助瞄准强度，100% 时用远程武器开火会吸附附近的可见怪物 |
+| 用 C# 改变操作、在设置页加控件 | [手柄辅助瞄准 1.0.2 成品](Examples/GamepadAimAssist/ReleaseExample/gamepad-aim-assist) · [源码](Examples/GamepadAimAssist/Source) · [编译和手柄测试](Examples/GamepadAimAssist/README.md) | 使用手柄时，「设置 → 游戏」出现辅助瞄准强度，100% 时用远程武器开火会吸附附近的可见怪物 |
 
 第一次编写代码模组，可以先做一个在游戏日志中打招呼的小模组，再接入窗口或现有 UI。[从零创建 C# 模组与 SDK 接口](Reference/代码模组与SDK.md)
 

@@ -72,16 +72,25 @@ namespace GamepadAimAssist
             itemKey = Enum.ToObject(itemType, slot);
             var image = focus.GetComponent<Image>();
             type.GetMethod("RegisterItem", flags).Invoke(owner, new object[] { itemKey, (RectTransform)transform, image, image });
-            EnsurePageEntry();
         }
 
-        private void EnsurePageEntry()
+        // 让可见行与原版上下导航保持一致，设备变化时原游戏也会重新分配页面列表。
+        internal void SyncDevice(bool usingGamepad)
         {
-            // 设备变化时原游戏会重新分配列表，重新加入这一页后由原版生成上下连接。
+            if (owner == null || !owner.isActiveAndEnabled) return;
             var entries = (IList)pages[gamePage];
-            if (entries.Contains(itemKey)) return;
-            entries.Add(itemKey);
-            if (isActiveAndEnabled) owner.ConfigureGamepadNavigation();
+            bool registered = entries.Contains(itemKey);
+            if (gameObject.activeSelf == usingGamepad && registered == usingGamepad) return;
+
+            // 先记下真实焦点。玩家已点到其他控件或弹窗时，保留其选择。
+            var events = EventSystem.current;
+            var selected = events != null ? events.currentSelectedGameObject : null;
+            bool hidingSelection = !usingGamepad && selected != null && selected.transform.IsChildOf(transform);
+            if (registered && !usingGamepad) entries.Remove(itemKey);
+            if (usingGamepad && !registered) entries.Add(itemKey);
+            gameObject.SetActive(usingGamepad);
+            owner.ConfigureGamepadNavigation();
+            if (hidingSelection) owner.EnsureGamepadFocus();
         }
 
         private static TMP_Text CreateText(RectTransform row, TMP_Text style, float left, float width)
@@ -109,7 +118,6 @@ namespace GamepadAimAssist
 
         internal void Refresh(int strength)
         {
-            EnsurePageEntry();
             slider.SetValueWithoutNotify(strength / 5f);
             ShowValue(strength);
             var input = InputManager.Instance;
